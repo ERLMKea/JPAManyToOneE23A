@@ -19,4 +19,6 @@ public class RegionRestController {
         List<Region> lst = apiServiceGetRegioner.getRegioner();
         return lst;
     }
+
+
 }

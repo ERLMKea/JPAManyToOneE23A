@@ -31,7 +31,6 @@ public class ApiServiceGetRegionerImpl implements ApiServiceGetRegioner {
 
     @Override
     public List<Region> getRegioner() {
-        List<Region> lst = new ArrayList<>();
         ResponseEntity<List<Region>> regionResponse =
                 restTemplate.exchange(regionUrl,
                         HttpMethod.GET, null, new      ParameterizedTypeReference<List<Region>>(){
@@ -40,8 +39,6 @@ public class ApiServiceGetRegionerImpl implements ApiServiceGetRegioner {
         saveRegioner(regioner);
         return regioner;
     }
-
-
 
 
 }

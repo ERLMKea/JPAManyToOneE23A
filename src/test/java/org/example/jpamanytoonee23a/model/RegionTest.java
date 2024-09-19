@@ -18,8 +18,12 @@ class RegionTest {
 
     @Test
     void testDeleteAll() {
-        Optional<Region> reg = regionRepository.findById("1081");
-
+        Optional<Region> regOpt = regionRepository.findById("1081");
+        Region reg = regOpt.get();
+        regionRepository.delete(reg);
+        System.out.println("slettet");
+        regOpt = regionRepository.findById("1081");
+        assertTrue(regOpt.isEmpty());
     }
 
 }

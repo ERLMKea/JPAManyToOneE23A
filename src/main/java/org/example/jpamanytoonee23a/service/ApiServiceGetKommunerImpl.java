@@ -30,6 +30,7 @@ public class ApiServiceGetKommunerImpl implements ApiServiceGetKommuner {
 
     @Override
     public List<Kommune> getKommuner() {
+        System.out.println("hej");
         ResponseEntity<List<Kommune>> KommuneResponse =
                 restTemplate.exchange(KommuneUrl,
                         HttpMethod.GET, null, new      ParameterizedTypeReference<List<Kommune>>(){

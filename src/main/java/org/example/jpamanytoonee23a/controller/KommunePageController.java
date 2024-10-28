@@ -48,7 +48,7 @@ public class KommunePageController {
         if (lstKommuner.isEmpty())
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
-        Map<String, Object> response = new HashMap<String, Object>(); //hej
+        Map<String, Object> response = new HashMap<>(); //hej
         response.put("kommuner", lstKommuner);
         response.put("currentpage", pageKommune.getNumber());
         response.put("totalItems", pageKommune.getTotalElements());

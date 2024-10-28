@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -50,6 +51,12 @@ public class KommuneRestController {
             //return ResponseEntity.notFound().build();
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Kommune not found");
         }
+    }
+
+    @GetMapping("kommune/navn/{name}")
+    public Kommune getKommuneNavn(@PathVariable String name) {
+        return kommuneRepository.findByNavn(name)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Kommune med navn =" + name));
     }
 
 

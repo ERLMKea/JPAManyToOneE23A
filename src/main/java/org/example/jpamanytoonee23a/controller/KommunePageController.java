@@ -40,6 +40,7 @@ public class KommunePageController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue= "10") int size) {
 
+        //http://localhost:8080/kommunepageparm?page=5&size=10
         Pageable kommunePage = PageRequest.of(page, size);
         Page<Kommune> pageKommune = kommuneRepository.findAll(kommunePage);
         List<Kommune> lstKommuner = pageKommune.getContent();

@@ -38,7 +38,6 @@ public class ExceptionController {
             s = s + " file: " + filename + " not found";
             return s;
         }
-
         return content;
     }
 
@@ -54,8 +53,8 @@ public class ExceptionController {
         return "" + i1;
     }
 
-    @GetMapping("loop/{loopnum}")
-    public String loop(@PathVariable int loopnum) {
+    @GetMapping("loopnot/{loopnum}")
+    public String durikke(@PathVariable int loopnum) {
         int x = 0;
         try {
             for (int i = 0; i < loopnum; i++) {
@@ -67,6 +66,25 @@ public class ExceptionController {
         }
         return "" + x;
     }
+
+    @GetMapping("loop/{loopnum}")
+    public String loop(@PathVariable String loopnum) {
+        int x = 0;
+        int y = 0;
+        try {
+            x = Integer.parseInt(loopnum);
+            for (int i = 0; i < x; i++) {
+                y++;
+            }
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+            return e.getClass().getName() + " : " + e.getMessage();
+        }
+        return "" + x;
+    }
+
+
+
 
 
 }

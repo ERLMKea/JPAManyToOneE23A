@@ -19,7 +19,7 @@ import java.util.Map;
 @Controller
 public class KommunePageController {
 
-    //mit repositlory
+    //mit repositlory skal på git
     private final KommuneRepository kommuneRepository;
 
     public KommunePageController(KommuneRepository kommuneRepository) {

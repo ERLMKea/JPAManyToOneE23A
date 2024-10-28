@@ -19,7 +19,6 @@ import java.util.Map;
 @Controller
 public class KommunePageController {
 
-    //mit repositlory skal på git asfdadsf
     private final KommuneRepository kommuneRepository;
 
     public KommunePageController(KommuneRepository kommuneRepository) {
@@ -48,7 +47,7 @@ public class KommunePageController {
         if (lstKommuner.isEmpty())
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
-        Map<String, Object> response = new HashMap<>(); //hej
+        Map<String, Object> response = new HashMap<>();
         response.put("kommuner", lstKommuner);
         response.put("currentpage", pageKommune.getNumber());
         response.put("totalItems", pageKommune.getTotalElements());

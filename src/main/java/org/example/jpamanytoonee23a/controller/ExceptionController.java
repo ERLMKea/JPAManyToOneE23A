@@ -53,6 +53,13 @@ public class ExceptionController {
         return "" + i1;
     }
 
+    @GetMapping("divx/{divnum}")
+    public String divx(@PathVariable int divnum) {
+        int i1 = 0;
+        i1 = 100 / divnum;
+        return "" + i1;
+    }
+
     @GetMapping("loopnot/{loopnum}")
     public String durikke(@PathVariable int loopnum) {
         int x = 0;

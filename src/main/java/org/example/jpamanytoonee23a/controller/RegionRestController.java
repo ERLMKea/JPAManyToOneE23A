@@ -1,5 +1,6 @@
 package org.example.jpamanytoonee23a.controller;
 
+import org.example.jpamanytoonee23a.exception.ResourceNotFoundException;
 import org.example.jpamanytoonee23a.model.Region;
 import org.example.jpamanytoonee23a.repository.RegionRepository;
 import org.example.jpamanytoonee23a.service.ApiServiceGetRegioner;
@@ -40,8 +41,8 @@ public class RegionRestController {
         return regionRepository.findAll();
     }
 
-    @GetMapping("/region/{kode}")
-    public ResponseEntity<Region> putRegion(@PathVariable String kode) {
+    @GetMapping("/regionx/{kode}")
+    public ResponseEntity<Region> getRegionx(@PathVariable String kode) {
         Optional<Region> orgRegion = regionRepository.findById(kode);
         if (orgRegion.isPresent()) {
             return ResponseEntity.ok(orgRegion.get());
@@ -50,5 +51,11 @@ public class RegionRestController {
         }
     }
 
+    @GetMapping("/region/{kode}")
+    public ResponseEntity<Region> getRegion(@PathVariable String kode) {
+       Region reg = regionRepository.findById(kode)
+                .orElseThrow(() -> new ResourceNotFoundException("Region not found id=" + kode));
+       return new ResponseEntity<>(reg, HttpStatus.OK);
+    }
 
 }

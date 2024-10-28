@@ -23,4 +23,14 @@ public class ControllerExceptionHandler {
         return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @ExceptionHandler(ArithmeticException.class)
+    public ResponseEntity<ErrorMessage> globalArithmeticExceptionHandler(Exception ex, WebRequest request) {
+        ErrorMessage message = new ErrorMessage(
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                new Date(),
+                ex.getMessage() + " Du dividerede lige med nul",
+                request.getDescription(false));
+        return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
 }

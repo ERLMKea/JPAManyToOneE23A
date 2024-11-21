@@ -1,6 +1,7 @@
 package org.example.jpamanytoonee23a.controller;
 
 import org.example.jpamanytoonee23a.exception.ResourceNotFoundException;
+import org.example.jpamanytoonee23a.model.Kommune;
 import org.example.jpamanytoonee23a.model.Region;
 import org.example.jpamanytoonee23a.repository.RegionRepository;
 import org.example.jpamanytoonee23a.service.ApiServiceGetRegioner;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -57,5 +59,19 @@ public class RegionRestController {
                 .orElseThrow(() -> new ResourceNotFoundException("Region not found id=" + kode));
        return new ResponseEntity<>(reg, HttpStatus.OK);
     }
+
+    @GetMapping("/kommunermedkode/{kode}")
+    public ResponseEntity<Set<Kommune>> getKommunermedkode(@PathVariable String kode) {
+        Optional<Region> regOpt = regionRepository.findById(kode);
+        if (regOpt.isPresent()) {
+            Region reg = regOpt.get();
+            Set<Kommune> kommuner = reg.getKommuner();
+            return new ResponseEntity<>(kommuner, HttpStatus.OK);
+
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 
 }

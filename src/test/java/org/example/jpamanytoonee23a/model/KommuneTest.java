@@ -17,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class KommuneTest {
 
-
     @Test
     @Disabled
     void fejl() {
@@ -53,7 +52,6 @@ class KommuneTest {
         Arrays.sort(numbers);
         //assertArrayEquals(expected, numbers);
         assertArrayEquals(expected, numbers, () -> "Sortering af 4 tal" + expected[1]);
-
     }
 
     @DisplayName("paramtest med 3 arrays")
@@ -71,7 +69,6 @@ class KommuneTest {
                 Arguments.of(IntStream.of(16,1,2,3).toArray(), IntStream.of(1,2,3,16).toArray())
         );
     }
-
 
 
 }
